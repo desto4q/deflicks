@@ -2,13 +2,13 @@ import { Badge, Flex, Stack } from "@mantine/core";
 import { useQuery } from "react-query";
 import { trendings } from "../api/api";
 import { Movies } from "../types/typedeclaration";
-import { genreListMovies } from "../Context/store";
+import { genreListMovies } from "../doc/doc";
 
-function Trends() {
+function Trends({ overwrite }: { overwrite?: string }) {
 	let { data } = useQuery<Movies>(["trends"], trendings);
 	return (
-		<Stack gap={"md"} className="mt-4">
-			<h1 className="text-3xl p-2 bg-neutral-900 rounded-md">Trending</h1>
+		<Stack gap={"md"} className={overwrite ? overwrite : "mt-4"}>
+			<h1 className="text-xl p-2 bg-neutral-900 rounded-md">Trending</h1>
 			<Stack className="bg-neutral-900 p-2 rounded-md">
 				{data?.results.map(({ id, title, genre_ids, poster_path }, index) => {
 					if (index > 10) {
@@ -30,7 +30,12 @@ function Trends() {
 												for (let i of genreListMovies) {
 													if (item == Number(i.id)) {
 														return (
-															<Badge autoContrast  color="gray">
+															<Badge
+																radius={"sm"}
+																key={i.id}
+																autoContrast
+																color="gray"
+															>
 																{i.name}
 															</Badge>
 														);

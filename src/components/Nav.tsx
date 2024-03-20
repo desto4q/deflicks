@@ -8,23 +8,27 @@ import {
 	Input,
 } from "@mantine/core";
 import { NAV_PATHS } from "../doc/doc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useDisclosure } from "@mantine/hooks";
 import { Spin as Hamburger } from "hamburger-react";
+import { useUsearch } from "../Context/store";
 
 function Nav() {
+	let navigate = useNavigate();
 	let [searchState, setSearch] = useState<string>("");
+	const state = useUsearch((state) => state);
 	let onSubmit = (e: React.ChangeEvent<any>): void => {
 		e.preventDefault();
-		// console.log(e.target[0].value);
+		state.setUsearch(searchState);
+		navigate("/search/" + searchState);
 	};
 
 	const [opened, { close, toggle: myswitch }] = useDisclosure(false);
 	return (
 		<Flex
 			component="nav"
-			className="absolute z-20 bg-neutral-900 bg-opacity-50 backdrop-blur-lg w-full h-16"
+			className="absolute top-0 z-20 bg-neutral-900 bg-opacity-50 backdrop-blur-lg w-full h-16"
 		>
 			{" "}
 			<Drawer

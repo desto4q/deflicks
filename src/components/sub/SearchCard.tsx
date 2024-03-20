@@ -1,21 +1,23 @@
-import { Badge, Group, Stack } from "@mantine/core";
-import { results } from "../../types/typedeclaration";
-interface movieCard extends Omit<results, "title"> {
-	title?: string;
-}
-function MovieCard({
-	title,
+import { Badge, Group, Stack, Text } from "@mantine/core";
+import { SearchResults } from "../../types/typedeclaration";
+// interface Searches extends Omit<results, "title"> {
+// 	title?: string;
+// }
+function SearchCard({
+	name,
 	poster_path,
 	vote_average,
 	release_date,
-}: movieCard) {
+	media_type,
+	title,
+}: SearchResults) {
 	return (
 		<Stack className="w-40 md:w-48 h-auto">
 			<div className="h-60 relative">
 				<img
 					loading="lazy"
 					className="h-full hover:scale-105 duration-100 w-full rounded-md object-cover"
-					src={`https://image.tmdb.org/t/p/w200//${poster_path}`}
+					src={`https://image.tmdb.org/t/p/w185//${poster_path}`}
 					alt=""
 					onError={(e) => {
 						e.currentTarget.src = "/notfound.png";
@@ -30,13 +32,15 @@ function MovieCard({
 						{vote_average}
 					</Badge>
 					<Badge radius={"md"} className="!bg-neutral-600">
-						{release_date?.substring(0,4)}
+						{media_type}
 					</Badge>
 				</Group>
 			</div>
-			<h2 className="text-center">{title}</h2>
+			<Text lineClamp={2} className="text-center  h-[3rem]">
+				{name ? name : title}
+			</Text>
 		</Stack>
 	);
 }
 
-export default MovieCard;
+export default SearchCard;

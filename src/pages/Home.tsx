@@ -9,8 +9,6 @@ import { Center, Grid, Loader, Pagination } from "@mantine/core";
 import Feed from "../components/Feed";
 import Trends from "../components/Trends";
 function Home() {
-
-	
 	let [searchParams, setSearchParams] = useSearchParams();
 	let pageNum: number = Number(searchParams.get("page"));
 
@@ -18,8 +16,16 @@ function Home() {
 		return now_playing({ page: pageNum ? pageNum : 1 });
 	});
 	let Card: ReactNode[] | undefined = data?.results?.map(
-		({ title, id, poster_path }) => {
-			return <MovieCard title={title} key={id} poster_path={poster_path} />;
+		({ title, id, poster_path, popularity, release_date, vote_average }) => {
+			return (
+				<MovieCard
+					title={title}
+					key={id}
+					poster_path={poster_path}
+					vote_average={vote_average}
+					release_date={release_date}
+				/>
+			);
 		}
 	);
 	return (
@@ -28,7 +34,7 @@ function Home() {
 			<Grid className="container mx-auto " overflow="hidden">
 				<Grid.Col span={{ base: 12, md: "content" }}>
 					{isLoading ? (
-						<Center className="mt-4 bg-neutral-900 rounded-sm p-6">
+						<Center className="mt-4 min-w-96 min-h-96  bg-neutral-900 rounded-md p-6">
 							<Loader color="yellow" />
 						</Center>
 					) : (
@@ -46,7 +52,11 @@ function Home() {
 					</Center>
 				</Grid.Col>
 
-				<Grid.Col span={{ base: 0, md: "auto" }} visibleFrom="md">
+				<Grid.Col
+					span={{ base: 0, md: "auto" }}
+					className=""
+					visibleFrom="md"
+				>
 					<Trends />
 				</Grid.Col>
 			</Grid>
