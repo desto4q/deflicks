@@ -1,17 +1,18 @@
 import { Badge, Group, Stack, Text } from "@mantine/core";
-import { SearchResults } from "../../types/typedeclaration";
-// interface Searches extends Omit<results, "title"> {
-// 	title?: string;
-// }
-function SearchCard({
+import { results } from "../../types/typedeclaration";
+import { Link } from "react-router-dom";
+
+export interface Iseries extends Omit<results, "title"> {
+	name: string;
+}
+function SeriesCard({
 	name,
 	poster_path,
 	vote_average,
-	media_type,
-	title,
-}: SearchResults) {
+	original_language,
+}: Iseries) {
 	return (
-		<Stack className="w-40 md:w-48 h-auto">
+		<Stack component={Link} className="w-40 md:w-48 h-auto">
 			<div className="h-60 relative hover:scale-105 duration-100">
 				<img
 					loading="lazy"
@@ -31,15 +32,15 @@ function SearchCard({
 						{vote_average}
 					</Badge>
 					<Badge radius={"md"} className="!bg-neutral-600">
-						{media_type}
+						{original_language}
 					</Badge>
 				</Group>
 			</div>
 			<Text lineClamp={2} className="text-center  h-[3rem]">
-				{name ? name : title}
+				{name}
 			</Text>
 		</Stack>
 	);
 }
 
-export default SearchCard;
+export default SeriesCard;

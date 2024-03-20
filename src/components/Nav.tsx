@@ -40,10 +40,10 @@ function Nav() {
 				{/* Drawer content */}
 			</Drawer>
 			<Group className="container mx-auto h-full px-2 lg:px-0 ">
-				<Link to={"/"} className="h-full py-4	">
-					<Image src={"/Logo.png"} className="h-full " visibleFrom="xs"></Image>
+				<Center component={Link} to={"/"} className="h-full py-4  flex">
+					<Image src={"/Logo.png"} className="h-6  " visibleFrom="xs"></Image>
 					<Image src={"/mob.png"} className="h-full 	 " hiddenFrom="xs"></Image>
-				</Link>
+				</Center>
 				<Group className="ml-auto  " visibleFrom="sm">
 					{NAV_PATHS.map(({ name, path }) => {
 						return (

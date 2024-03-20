@@ -43,7 +43,7 @@ function SearchPage() {
 		}
 	);
 	return (
-		<Stack className=" mt-32 container mx-auto p-2  ">
+		<Stack className=" mt-20 container mx-auto p-2  ">
 			<Grid overflow="hidden">
 				<Grid.Col span={{ base: 12, md: "content" }}>
 					<Stack>

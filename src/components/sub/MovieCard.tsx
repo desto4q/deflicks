@@ -1,5 +1,6 @@
 import { Badge, Group, Stack } from "@mantine/core";
 import { results } from "../../types/typedeclaration";
+import { Link } from "react-router-dom";
 interface movieCard extends Omit<results, "title"> {
 	title?: string;
 }
@@ -8,13 +9,18 @@ function MovieCard({
 	poster_path,
 	vote_average,
 	release_date,
+	id,
 }: movieCard) {
 	return (
-		<Stack className="w-40 md:w-48 h-auto">
-			<div className="h-60 relative">
+		<Stack
+			component={Link}
+			to={`/movie/${title}/${id}`}
+			className="w-40 md:w-48 h-auto"
+		>
+			<div className="h-60 relative hover:scale-105 duration-100">
 				<img
 					loading="lazy"
-					className="h-full hover:scale-105 duration-100 w-full rounded-md object-cover"
+					className="h-full hover:scale-105  w-full rounded-md object-cover"
 					src={`https://image.tmdb.org/t/p/w200//${poster_path}`}
 					alt=""
 					onError={(e) => {
@@ -30,7 +36,7 @@ function MovieCard({
 						{vote_average}
 					</Badge>
 					<Badge radius={"md"} className="!bg-neutral-600">
-						{release_date?.substring(0,4)}
+						{release_date?.substring(0, 4)}
 					</Badge>
 				</Group>
 			</div>

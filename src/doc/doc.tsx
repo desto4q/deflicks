@@ -1,19 +1,11 @@
 export let NAV_PATHS = [
 	{
-		name: "Home",
+		name: "Movies",
 		path: "/",
 	},
 	{
-		name: "Ongoing",
-		path: "/",
-	},
-	{
-		name: "New",
-		path: "/",
-	},
-	{
-		name: "Doc",
-		path: "/",
+		name: "Series",
+		path: "/series",
 	},
 ];
 export let genreListMovies = [

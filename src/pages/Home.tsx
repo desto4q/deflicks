@@ -16,11 +16,12 @@ function Home() {
 		return now_playing({ page: pageNum ? pageNum : 1 });
 	});
 	let Card: ReactNode[] | undefined = data?.results?.map(
-		({ title, id, poster_path, popularity, release_date, vote_average }) => {
+		({ title, id, poster_path, release_date, vote_average }) => {
 			return (
 				<MovieCard
 					title={title}
 					key={id}
+					id={id}
 					poster_path={poster_path}
 					vote_average={vote_average}
 					release_date={release_date}
@@ -38,7 +39,7 @@ function Home() {
 							<Loader color="yellow" />
 						</Center>
 					) : (
-						<Feed className="w-max" content={Card} title="Recents Movies" />
+						<Feed className="w-max" content={Card} title="Recent Movies" />
 					)}
 					<Center className="container  mx-auto  my-6 ">
 						<Pagination
@@ -52,11 +53,7 @@ function Home() {
 					</Center>
 				</Grid.Col>
 
-				<Grid.Col
-					span={{ base: 0, md: "auto" }}
-					className=""
-					visibleFrom="md"
-				>
+				<Grid.Col span={{ base: 0, md: "auto" }} className="" visibleFrom="md">
 					<Trends />
 				</Grid.Col>
 			</Grid>
