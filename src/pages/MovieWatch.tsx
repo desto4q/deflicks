@@ -11,8 +11,8 @@ function MovieWatch() {
 			</Flex>
 			<iframe
 				allowFullScreen
-				// frameBorder={0}
-                allow="fullscreen"
+				frameBorder={0}
+				allow="fullscreen"
 				className=" h-60 md:h-[550px] rounded-md "
 				src={`https://vidsrc.to/embed/movie/${id}`}
 			></iframe>

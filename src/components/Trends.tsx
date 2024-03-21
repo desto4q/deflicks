@@ -15,14 +15,14 @@ function Trends({ overwrite }: { overwrite?: string }) {
 						return null;
 					}
 					return (
-						<Flex className="h-32 p-2" key={id} gap={"md"}>
+						<Flex className="h-32 p-2" key={id} gap={"md"} justify={{ base: "center", mmd: "flex-start" }}> 
 							<img
 								className="w-20 rounded-md"
 								src={`https://image.tmdb.org/t/p/w500//${poster_path}`}
 							></img>
 							<Stack gap={0}>
 								<h1>{title}</h1>
-								<Stack gap={0}>
+								<Stack gap={0}  visibleFrom="mmd">
 									<h2 className="text-neutral-500">Genres:</h2>
 									<Flex wrap={"wrap"} gap={"xs"}>
 										{genre_ids?.map((item, index) => {

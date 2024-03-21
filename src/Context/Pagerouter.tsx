@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
-import { MantineProvider } from "@mantine/core";
+import { MantineProvider, createTheme } from "@mantine/core";
 import Nav from "../components/Nav";
 import { QueryClientProvider, QueryClient } from "react-query";
 import SearchPage from "../pages/SearchPage";
@@ -8,11 +8,14 @@ import Series from "../pages/Series";
 import MovieWatch from "../pages/MovieWatch";
 
 const queryClient = new QueryClient();
+let theme = createTheme({
+	breakpoints: { mmd: "65rem" },
+});
 function Pagerouter() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<BrowserRouter>
-				<MantineProvider defaultColorScheme="dark">
+				<MantineProvider defaultColorScheme="dark" theme={theme}>
 					<div className="fixed -z-10 h-dvh w-full top-0 left-0">
 						<img
 							src="/intro.png"

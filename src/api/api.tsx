@@ -110,3 +110,8 @@ export let trendings = () => {
 	let url = "https://api.themoviedb.org/3/trending/movie/week?language=en-US";
 	return fetch_func(url, options);
 };
+
+export let trending_tv = () => {
+	let url = "https://api.themoviedb.org/3/trending/tv/week?language=en-US";
+	return fetch_func(url, options);
+};
