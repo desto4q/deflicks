@@ -1,0 +1,7 @@
+.awssld__controls button {
+	color: black; // Change the arrow color
+}
+
+.awssld__controls button::before {
+	border-color: red; // Change the border color of the arrow
+}
