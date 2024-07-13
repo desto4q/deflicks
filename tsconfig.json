@@ -5,7 +5,6 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-  
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -17,8 +16,8 @@
 
     /* Linting */
     "strict": false,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": true, // Keep this to warn about unused local variables
+    "noUnusedParameters": true, // Keep this to warn about unused parameters
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
