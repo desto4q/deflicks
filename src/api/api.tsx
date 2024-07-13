@@ -4,9 +4,11 @@ type option = {
 		Authorization: string;
 	};
 };
+let mykey = import.meta.env.VITE_AUTH
+
 export let options = {
 	headers: {
-		Authorization: `Bearer ${import.meta.env.VITE_AUTH}`,
+		Authorization: `Bearer ${mykey}`,
 	},
 };
 
@@ -15,8 +17,8 @@ let fetch_func = async (url: string, options: option) => {
 	let data = await fetch(url, options).then((resp) => {
 		return resp.json();
 	});
-	if (data.success == false){
-		throw new Error("404")
+	if (data.success == false) {
+		throw new Error("404");
 	}
 	return data;
 };
