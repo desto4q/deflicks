@@ -66,7 +66,7 @@ function MovieWatch() {
 						frameBorder={0}
 						allow="fullscreen"
 						className="w-full h-96"
-						src={`https://vidsrc.to/embed/movie/${id}`}
+						src={`https://vidsrc.me/embed/movie/${id}`}
 					></iframe>
 				</Stack>
 				<Stack
