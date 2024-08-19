@@ -44,7 +44,7 @@ function SeriesWatch() {
 					</Stack>
 					<iframe
 						className="w-full h-96"
-						src={`https://vidsrc.to/embed/tv/${id}/${seasonid}/${episodeid}`}
+						src={`https://vidsrc.me/embed/tv/${id}/${seasonid}/${episodeid}`}
 						allowFullScreen
 					></iframe>
 
